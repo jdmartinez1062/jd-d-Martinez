@@ -32,17 +32,18 @@
       <section class="main-section" id="Introduction">
         <header>Introduction</header>
         <p>
-          JavaScript is a cross-platform, object-oriented scripting language. It is a small and lightweight language. Inside a host environment (for example, a web browser), JavaScript can be connected to the objects of its environment to provide programmatic control over them.
+          It is a known fact that requirements and needs lead to inventions and discoveries.
+          Business at the Texas Instruments MOS Department was mostly a custom business wherein companies like desktop calculator manufacturers came to TI with a set of specific requirements. TI converted those specifications to a chip set, normally four, five or six chips to execute or implement the specifications for popular companies like Canon, Olympia or Olivetti.Â  For these companies, it was really amazing that TI provided this ultimate service of compressing so many units on to just four or five or six chips because the previously used technology called the TTL would use hundred to two hundred chips. No wonder the business was doing great.
         </p>
         <p>
-          JavaScript contains a standard library of objects, such as Array, Date, and Math, and a core set of language elements such as operators, control structures, and statements. Core JavaScript can be extended for a variety of purposes by supplementing it with additional objects; for example:
+          It was during these times that Gary Boone was with a few other people making extensive research within the country as well as flying to Germany, Italy and other countries. They were trying to understand the needs of the new customers and work on it. Boone was literally bored after doing this a number of times. Besides, since their previous projects were all successful and they had a flock of satisfied customers, a new set of customers required them to do the same work they did to someone else the previous year. Thus, there was a significant demand for more and more of these projects.
         </p>
         <ul>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
+          <li>ATMEL</li>
+          <li>PIC</li>
+          <li>TEXAS INSTRUMENTS</li>
+          <li>ST MICROELECTRONICS</li>
+          <li>ESPRESSIFF</li>
         </ul>
         <code>
 
@@ -53,27 +54,28 @@
         <header>What you should already know</header>
         <p>
           JavaScript and Java are similar in some ways but fundamentally different in some others. The JavaScript language resembles Java but does not have Java's static typing and strong type checking. JavaScript follows most Java expression syntax, naming conventions and basic control-flow constructs which was the reason why it was renamed from LiveScript to JavaScript.
-
-          In contrast to Java's compile-time system of classes built by declarations, JavaScript supports a runtime system based on a small number of data types representing numeric, Boolean, and string values. JavaScript has a prototype-based object model instead of the more common class-based object model. The prototype-based model provides dynamic inheritance; that is, what is inherited can vary for individual objects. JavaScript also supports functions without any special declarative requirements. Functions can be properties of objects, executing as loosely typed methods.
-
           JavaScript is a very free-form language compared to Java. You do not have to declare all variables, classes, and methods. You do not have to be concerned with whether methods are public, private, or protected, and you do not have to implement interfaces. Variables, parameters, and function return types are not explicitly typed.
         </p>
-        <p></p>
+        <p>
+          In contrast to Java's compile-time system of classes built by declarations, JavaScript supports a runtime system based on a small number of data types representing numeric, Boolean, and string values. JavaScript has a prototype-based object model instead of the more common class-based object model. The prototype-based model provides dynamic inheritance; that is, what is inherited can vary for individual objects. JavaScript also supports functions without any special declarative requirements. Functions can be properties of objects, executing as loosely typed methods.
+        </p>
         <code>
 
         </code>
       </section>
 
       <section class="main-section" id="JavaScript_and_Java">
-        <header>JavaScript and Java</header>
+        <header>Programming Microcontrollers</header>
         <p>
-          You use variables as symbolic names for values in your application. The names of variables, called identifiers, conform to certain rules.
-
-          A JavaScript identifier must start with a letter, underscore (_), or dollar sign ($); subsequent characters can also be digits (0-9). Because JavaScript is case sensitive, letters include the characters "A" through "Z" (uppercase) and the characters "a" through "z" (lowercase).
-
-          You can use ISO 8859-1 or Unicode letters such as å and ü in identifiers. You can also use the Unicode escape sequences as characters in identifiers. Some examples of legal names are Number_hits, temp99, and _name.
+          Before you can upload your program to your microcontroller, you need to compile it. This means converting the code from human-readable code to machine-readable code.
+          Use a compiler that supports your microcontroller and compile your code into machine-code for your chip. A popular compiler for Atmel AVR microcontrollers is avr-gcc.
+          After compilation, you will have one or more files containing machine code. Then you need to upload these files to your microcontroller.
          </p>
-        <p></p>
+        <p>
+          Usually, it’s one program file and a file for EEPROM and/or flash that you need to upload.
+          You need a physical connection from your computer to your microcontroller. Either you can use a dedicated programmer (such as the AVRISP for AVR microcontrollers), or if you have a USB programmable chip you can program it with a USB cable (my preferred method).
+          And you need a program for uploading the file(s). For AVR chips, you can use AVRDUDE.
+        </p>
         <code>
 
         </code>
@@ -82,34 +84,34 @@
       <section class="main-section" id="Hello_world">
         <header>Hello world</header>
         <p>
-          When you declare a variable outside of any function, it is called a global        variable, because it is available to any other code in the current document. When you declare a variable within a function, it is called a local variable, because it is available only within that function.
-
-          JavaScript before ECMAScript 2015 does not have block statement scope; rather, a variable declared within a block is local to the function (or global scope) that the block resides within. For example the following code will log 5, because the scope of x is the function (or global context) within which x is declared, not the block, which in this case is an if statement.
+          GPIO pins are normally configured on reset as inputs, but they can be reconfigured under program control.  GPIO pin options can vary from a few simple choices (input or output) to a fairly complex set of choices.  The AVR family is on the simple side of the spectrum.  An AVR GPIO pin can be configured as an input or as an output.  Additionally, if a pin is configured as an input, it can further be configured to enable a weak internal pullup resistor on the input.  So the three choices are ouput, input, or input with internal pullup.
+          For the STM32, there are many more options, including both internal pullups and internal pulldowns, as well as various output configurations, and speed ratings to offer tradeoffs between output switching speed and EMI (electromagnetic interference).  In addition, before using an STM32 GPIO port, that port's clock must be enabled.
+          It is worth noting here that the AVR ports are 8 bits wide, while the STM32 ports are 12 bits wide.
         </p>
-        <p></p>
+        <p>
+          Embedded programs will typically do a fair amount of bit manipulation, both input and output. All kinds of switches, sensors, drivers, actuators, and other input and output devices are represented in the program as individual bits or collections of bits. Not only that, but a μC will have many configuration and status registers which will call for the setting or clearing of individual configuration bits, and the reading of individual status bits.
+          In our first example programs we will see LEDs and switches represented as individual bits, and later many other input and output devices will be added to that list. Thus it is important to understand how to manipulate bits, that is, to read individual bit states and to set or clear individual bit states.
+          What makes bit manipulation non-trivial is that bits do not usually exist alone, but exist within bytes (and 16-bit words and 32-bit words). Thus it becomes necessary, when writing individual bits, to avoid changing other bits within the same byte/word, and when reading individual bits, to avoid reading (or ignore) other bits within the same byte/word. The CPU logic instructions, as discussed in an earlier section, are what allow us to do these things.
+          It must be noted that some μC families also include instructions that directly act on individual bits, at least individual bits in certain registers or address ranges. These instructions are commonly used for reading and writing bits in configuration and status registers, and for maintaining bit flags in memory. These instructions, while nice to have, are not a necessity, and the standard logic instructions can always do the same job (with one or two caveats that we will discuss in the future).  What's more, standard C and other high-level languages will not have language constructs designed to access individual bits, even if the μC does have individual bit instructions.  If you are writing in a high-level language, it will be up to your compiler as to whether it  recognizes individual bit manipulations and uses specialized instructions in those cases.
+        </p>
         <code>
 
         </code>
       </section>
 
       <section class="main-section" id="Variables">
-        <header>Variables</header>
+        <header>Data sizes</header>
         <p>
-          You can create a read-only, named constant with the const keyword. The syntax of a constant identifier is the same as for a variable identifier: it must start with a letter, underscore or dollar sign and can contain alphabetic, numeric, or underscore characters.
-          const PI = 3.14;
-
-          A constant cannot change value through assignment or be re-declared while the script is running. It has to be initialized to a value.
-
-          The scope rules for constants are the same as those for let block scope variables. If the const keyword is omitted, the identifier is assumed to represent a variable.
-
-          You cannot declare a constant with the same name as a function or variable in the same scope. For example:
-          // THIS WILL CAUSE AN ERROR function f() {}; const f = 5; // THIS WILL
-          CAUSE AN ERROR ALSO function f() { const g = 5; var g; //statements
-          }
-          However, object attributes are not protected, so the following statement is executed without problems.
-          const MY_OBJECT = {"key": "value"}; MY_OBJECT.key = "otherValue";
+          Before we start talking about time delays, this is probably as good a place as any to examine and emphasize the range of values that can be represented by data variables of different byte sizes.  These are numbers that μC programmers will deal with throughout their careers, so get to know them well:
+          • 1 byte (8 bits):    0 to 255 unsigned             -128 to 127 signed
+          • 2 bytes (16 bits):  0 to 65,535 unsigned          -32,768 to 32,767 signed
+          • 4 bytes (32 bits):  0 to 4,294,967,295 unsigned   -2,147,483,678 to 2,147,483,677 signed
+          (for 32 bits I just think 0 to 4 billion unsigned, -2 billion to +2 billion signed)
         </p>
-        <p></p>
+        <p>
+          While there are many ways to execute time delays and generate time intervals, the simplest (but not the best) is a software delay.  This just involves sitting in a do-nothing loop for the desired length of time, and then exiting the loop.  Since microcontrollers are so fast, a one-second delay may loop hundreds of thousands or millions of times.  These are hundreds of thousands or millions of CPU clock cycles that are being wasted, not available for doing any other useful work.  For this reason, software delays are not generally a good idea, even though they are easy to understand for beginners.
+          For a suitable LED blink rate, a useful rule of thumb for estimating how many times a software delay should loop is to divide the μC clock rate by 100.  Use this count for both the LED ON and OFF times, so the total LED delay for one blink cycle is twice this value.  Thus an AVR running at 1MHz would delay loop 10,000 times while ON, then 10,000 times while OFF, and the STM32 running at 8MHz would delay loop 80,000 times ON and the same number OFF.  This is just a rule of thumb, of course, and the numbers can be increased or decreased, but it's a really easy number to calculate, and it generally gives a number that results in a good blink rate.  A good blink rate is simply one where the total blink period is not so small that the LED blinks too fast to notice it is blinking (say 20 or more times per second), nor so large that the LED takes many seconds to blink, forcing you to sit and stare at it to see if your program is working at all.
+        </p>
         <code>
 
         </code>
