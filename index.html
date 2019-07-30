@@ -11,21 +11,17 @@
     <div>
       <header>
         <h1 id="title">Technical Documentation</h1>
-
       </header>
     </div>
-
-
-
-    <main id= "main-doc">
+  <main id= "main-doc">
       <nav id="navbar">
         <header>Microcontrollers Documentation</header>
         <ul>
           <li><a class="nav-link" href="#Introduction">Introduction</a></li>
           <li><a class="nav-link" href="#What_you_should_already_know">What you should already know</a></li>
-          <li><a class="nav-link" href="#JavaScript_and_Java">JavaScript and Java</a></li>
+          <li><a class="nav-link" href="#Programming_Microcontrollers">Programming Microcontrollers</a></li>
           <li><a class="nav-link" href="#Hello_world">Hello world</a></li>
-          <li><a class="nav-link" href="#Variables">Variables</a></li>
+          <li><a class="nav-link" href="#Data_sizes">Data sizes</a></li>
         </ul>
       </nav>
       <div>
@@ -43,12 +39,9 @@
           <li>PIC</li>
           <li>TEXAS INSTRUMENTS</li>
           <li>ST MICROELECTRONICS</li>
-          <li>ESPRESSIFF</li>
+        <li>ESPRESSIFF</li>
         </ul>
-        <code>
-
-        </code>
-      </section>
+    </section>
 
       <section class="main-section" id="What_you_should_already_know">
         <header>What you should already know</header>
@@ -59,12 +52,9 @@
         <p>
           In contrast to Java's compile-time system of classes built by declarations, JavaScript supports a runtime system based on a small number of data types representing numeric, Boolean, and string values. JavaScript has a prototype-based object model instead of the more common class-based object model. The prototype-based model provides dynamic inheritance; that is, what is inherited can vary for individual objects. JavaScript also supports functions without any special declarative requirements. Functions can be properties of objects, executing as loosely typed methods.
         </p>
-        <code>
-
-        </code>
       </section>
 
-      <section class="main-section" id="JavaScript_and_Java">
+      <section class="main-section" id="Programming_Microcontrollers">
         <header>Programming Microcontrollers</header>
         <p>
           Before you can upload your program to your microcontroller, you need to compile it. This means converting the code from human-readable code to machine-readable code.
@@ -76,9 +66,6 @@
           You need a physical connection from your computer to your microcontroller. Either you can use a dedicated programmer (such as the AVRISP for AVR microcontrollers), or if you have a USB programmable chip you can program it with a USB cable (my preferred method).
           And you need a program for uploading the file(s). For AVR chips, you can use AVRDUDE.
         </p>
-        <code>
-
-        </code>
       </section>
 
       <section class="main-section" id="Hello_world">
@@ -94,27 +81,41 @@
           What makes bit manipulation non-trivial is that bits do not usually exist alone, but exist within bytes (and 16-bit words and 32-bit words). Thus it becomes necessary, when writing individual bits, to avoid changing other bits within the same byte/word, and when reading individual bits, to avoid reading (or ignore) other bits within the same byte/word. The CPU logic instructions, as discussed in an earlier section, are what allow us to do these things.
           It must be noted that some μC families also include instructions that directly act on individual bits, at least individual bits in certain registers or address ranges. These instructions are commonly used for reading and writing bits in configuration and status registers, and for maintaining bit flags in memory. These instructions, while nice to have, are not a necessity, and the standard logic instructions can always do the same job (with one or two caveats that we will discuss in the future).  What's more, standard C and other high-level languages will not have language constructs designed to access individual bits, even if the μC does have individual bit instructions.  If you are writing in a high-level language, it will be up to your compiler as to whether it  recognizes individual bit manipulations and uses specialized instructions in those cases.
         </p>
-        <code>
-
-        </code>
       </section>
 
-      <section class="main-section" id="Variables">
+      <section class="main-section" id="Data_sizes">
         <header>Data sizes</header>
         <p>
           Before we start talking about time delays, this is probably as good a place as any to examine and emphasize the range of values that can be represented by data variables of different byte sizes.  These are numbers that μC programmers will deal with throughout their careers, so get to know them well:
-          • 1 byte (8 bits):    0 to 255 unsigned             -128 to 127 signed
-          • 2 bytes (16 bits):  0 to 65,535 unsigned          -32,768 to 32,767 signed
-          • 4 bytes (32 bits):  0 to 4,294,967,295 unsigned   -2,147,483,678 to 2,147,483,677 signed
-          (for 32 bits I just think 0 to 4 billion unsigned, -2 billion to +2 billion signed)
+          <br>
+          <br>
+          <code>
+            • 1 byte (8 bits):    0 to 255 unsigned             -128 to 127 signed
+          </code>
+          <br>
+          <code>
+            • 2 bytes (16 bits):  0 to 65,535 unsigned          -32,768 to 32,767 signed
+          </code>
+          <br>
+          <code>
+            • 2 bytes (16 bits):  0 to 65,535 unsigned          -32,768 to 32,767 signed
+          </code>
+          <br>
+          <code>
+            • 2 bytes (16 bits):  0 to 65,535 unsigned          -32,768 to 32,767 signed
+          </code>
+          <br><code>
+            • 4 bytes (32 bits):  0 to 4,294,967,295 unsigned   -2,147,483,678 to 2,147,483,677 signed
+            (for 32 bits I just think 0 to 4 billion unsigned, -2 billion to +2 billion signed)
+          </code>
+          <br>
+
         </p>
         <p>
           While there are many ways to execute time delays and generate time intervals, the simplest (but not the best) is a software delay.  This just involves sitting in a do-nothing loop for the desired length of time, and then exiting the loop.  Since microcontrollers are so fast, a one-second delay may loop hundreds of thousands or millions of times.  These are hundreds of thousands or millions of CPU clock cycles that are being wasted, not available for doing any other useful work.  For this reason, software delays are not generally a good idea, even though they are easy to understand for beginners.
           For a suitable LED blink rate, a useful rule of thumb for estimating how many times a software delay should loop is to divide the μC clock rate by 100.  Use this count for both the LED ON and OFF times, so the total LED delay for one blink cycle is twice this value.  Thus an AVR running at 1MHz would delay loop 10,000 times while ON, then 10,000 times while OFF, and the STM32 running at 8MHz would delay loop 80,000 times ON and the same number OFF.  This is just a rule of thumb, of course, and the numbers can be increased or decreased, but it's a really easy number to calculate, and it generally gives a number that results in a good blink rate.  A good blink rate is simply one where the total blink period is not so small that the LED blinks too fast to notice it is blinking (say 20 or more times per second), nor so large that the LED takes many seconds to blink, forcing you to sit and stare at it to see if your program is working at all.
         </p>
-        <code>
 
-        </code>
       </section>
       <div>
     </main>
